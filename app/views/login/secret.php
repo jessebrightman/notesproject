@@ -11,9 +11,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Laravel_Assignment</title>
-    <meta name="description" content="Bootstrap Tab + Fixed Sidebar Tutorial with HTML5 / CSS3 / JavaScript">
-    <meta name="author" content="Untame.net">
+    <title>Laravel_Assignment(TEMPORARY CONTENT)</title>
+    <meta name="description" content="Bootstrap + Fixed Sidebar with HTML5 / CSS3 / JavaScript">
+    <meta name="Jesse/Georgios" content="">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="assets/bootstrap.min.js"></script>
@@ -49,7 +49,7 @@
 
 <div class="container hero-unit">
     <h2>Hello <?php echo htmlentities($_SESSION['user']['username'], ENT_QUOTES, 'UTF-8'); ?>, here's the secret content!</h2>
-    <p>Check out the change in the navbar! Use the new "Log Out" button to do just that. Oh, were you expecting something more exciting on the secret page? Just a city view</p>
+    <p> Use the new "Log Out" button to do just that. Oh, were you expecting something more exciting on the secret page? Just a city view</p>
     <p><img src="assets/city.jpg" alt="" class="center" /></p>
 </div>
 

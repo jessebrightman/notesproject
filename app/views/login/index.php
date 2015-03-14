@@ -52,9 +52,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap Tutorial</title>
-    <meta name="description" content="Bootstrap Tab + Fixed Sidebar Tutorial with HTML5 / CSS3 / JavaScript">
-    <meta name="author" content="Untame.net">
+    <title>Laravel_Assignment(TEMPORARY CONTENT)</title>
+    <meta name="description" content="Bootstrap Tab + Fixed Sidebar with HTML5 / CSS3 / JavaScript">
+    <meta name="Jesse/Georgios" content="">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="assets/bootstrap.min.js"></script>
