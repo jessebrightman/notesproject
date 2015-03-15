@@ -32,7 +32,7 @@
             margin: 16px 0 0 0;
         }
         body { background-color: #EEE; }
-        .maincontent {
+        .loginpanel {
             background-color: #FFF;
             margin: auto;
             padding: 20px;
@@ -50,18 +50,23 @@
 <div class="container">
     <nav class="navbar navbar-inverse">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ URL::to('students') }}">NOTES++</a>
+            <a class="navbar-brand" href="{{ URL::to('users/login') }}"><img src="C:\phpprojects\notesproject\public\img\notes++.png" alt="notes++"/></a>
         </div>
         <ul class="nav navbar-nav">
-            <!--<li><a href="{{ URL::to('students') }}">View All Students</a></li>
-            <li><a href="{{ URL::to('students/create') }}">Create a Student</a>
-            <li><a href="{{ URL::to('sessions/destroy') }}">Logout</a>-->
+            <!--<li><a href="{{ URL::to('students') }}">View All Students</a></li>-->
+            <li><a href="{{ URL::to('users/create') }}">Register</a>
+            @if (Confide::user() == null)
+                <li><a href="{{ URL::to('users/login') }}">Login</a>
+                @endif
+                @if (Confide::user() != null)
+            <li><a href="{{ URL::to('users/logout') }}">Logout</a>
+            @endif
+
         </ul>
     </nav>
-    <div class="welcome">
         @yield('maincontent')
         @yield('footers')
-    </div>
+
 </div>
 </body>
 </html>
