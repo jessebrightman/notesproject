@@ -21,6 +21,9 @@ class Notes extends Eloquent implements UserInterface, RemindableInterface {
      * @var string
      */
     protected $table = 'notes';
+    public $timestamps = true;
+
+    protected $fillable = ['user_id', 'notes', 'tbd', 'hyperlinks', 'images'];
 
     /**
      * The attributes excluded from the model's JSON form.

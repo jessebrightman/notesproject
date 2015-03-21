@@ -35,3 +35,16 @@ Route::get('userpanel/dashboard', function(){ return View::make('userpanel.dashb
 
 // Applies auth filter to the routes within admin/
 Route::when('userpanel/*', 'auth');
+
+Route::resource('notes', 'NotesController', ['only'=> ['index','create','store', 'show', 'edit', 'update', 'destroy']]);
+
+// Notes routes
+Route::get('notes/index', 'NotesController@index');
+Route::post('notes', 'NotesController@store');
+Route::get('notes/create', 'NotesController@create');
+Route::post('notes/create', 'NotesController@store');
+Route::get('notes/show', 'NotesController@show');
+Route::get('notes/edit', 'NotesController@edit');
+Route::post('notes/forgot_password', 'NotesController@doForgotPassword');
+Route::get('notes/update', 'NotesController@update');
+Route::post('notes/destroy', 'NotesController@destroy');
