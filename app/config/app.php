@@ -122,6 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Zizaco\Confide\ServiceProvider',
+		'Intervention\Image\ImageServiceProvider'
 
 	),
 
@@ -189,7 +190,8 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
-		'Confide' 			=> 'Zizaco\Confide\Facade'
+		'Confide' 			=> 'Zizaco\Confide\Facade',
+		'Img' 				=> 'Intervention\Image\Facades\Image'
 
 	),
 
