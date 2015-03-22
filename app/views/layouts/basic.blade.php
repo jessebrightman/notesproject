@@ -36,26 +36,24 @@
             background-color: #FFF;
             margin: auto;
             padding: 20px;
-            width: 300px;
+            width: 350px;
             box-shadow: 0 0 20px #AAA;
         }
     </style>
     {{-- Imports twitter bootstrap and set some styling --}}
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-
-    </style>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 <div class="container">
     <nav class="navbar navbar-inverse">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ URL::to('users/login') }}"><img src="C:\phpprojects\notesproject\public\img\notes++.png" alt="notes++"/></a>
+            <a class="navbar-brand" href="{{ URL::to('users/login') }}"></a>
         </div>
         <ul class="nav navbar-nav">
-            <!--<li><a href="{{ URL::to('students') }}">View All Students</a></li>-->
-            <li><a href="{{ URL::to('users/create') }}">Register</a>
+
             @if (Confide::user() == null)
+                <li><a href="{{ URL::to('users/create') }}">Register</a>
                 <li><a href="{{ URL::to('users/login') }}">Login</a>
                 @endif
                 @if (Confide::user() != null)

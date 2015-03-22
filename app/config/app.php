@@ -122,8 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Zizaco\Confide\ServiceProvider',
-		'Intervention\Image\ImageServiceProvider',
-        'Mews\Captcha\CaptchaServiceProvider'
+		'Intervention\Image\ImageServiceProvider'
 
 	),
 
@@ -192,8 +191,7 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 		'Confide' 			=> 'Zizaco\Confide\Facade',
-		'Img' 				=> 'Intervention\Image\Facades\Image',
-        'Captcha'           => 'Mews\Captcha\Facades\Captcha'
+		'Image' 				=> 'Intervention\Image\Facades\Image'
 
 	),
 

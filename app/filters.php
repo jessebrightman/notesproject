@@ -88,3 +88,22 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+//recaptcha filter
+
+/*Route::filter('reCaptcha', function() {
+	//Lib file
+	require_once(app_path().'/recaptchalib.php');
+	//Private and public keys
+	$config  = include app_path().'/config/reCaptacha.php';
+	$privatekey = $config['6Lck4gMTAAAAALdDpPQuU3kJaON21waUuSoAv-bS'];
+	$resp = recaptcha_check_answer($privatekey, $_SERVER["REMOTE_ADDR"],
+		$_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
+
+	if (!$resp->is_valid) {
+		// What happens when the CAPTCHA was entered incorrectly
+		//Here you can throw an exception or something
+		die("The reCAPTCHA wasn't entered correctly. Go back and try it again." .
+			"(reCAPTCHA said: " . $resp->error . ")");
+	}
+});*/
