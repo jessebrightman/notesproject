@@ -11,9 +11,8 @@ class NotesController extends \BaseController {
 	{
 		//
 		$id = Confide::user()->id;
-		$notes = Notes::all();
-		return View::make('userpanel.dashboard')->with('notes', $notes);
-
+        $notes = Notes::find($id);
+        return View::make('userpanel.dashboard');
 	}
 
 
@@ -38,11 +37,11 @@ class NotesController extends \BaseController {
 		//
 		// store
 		$note = new Notes();
-		$note->user_id = Confide::user()->id;
+        $note->user_id = Confide::user();
 		$note->notes = Input::get('notes');
 		$note->tbd = Input::get('tbd');
 		$note->hyperlinks = Input::get('hyperlinks');
-		$note->images = Img::make(Input::file('images')->getRealPath());
+        $note->images = Input::get('images');;
 		$note->save();
 
 		return Redirect::to('userpanel.dashboard');

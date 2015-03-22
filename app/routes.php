@@ -31,7 +31,7 @@ Route::post('users/reset_password', 'UsersController@doResetPassword');
 Route::get('users/logout', 'UsersController@logout');
 
 // Dashboard route
-//Route::get('userpanel/dashboard', function(){ return View::make('userpanel.dashboard'); });
+Route::get('userpanel/dashboard', function(){ return View::make('userpanel.dashboard'); });
 
 // Applies auth filter to the routes within admin/
 Route::when('userpanel/*', 'auth');
@@ -39,7 +39,7 @@ Route::when('userpanel/*', 'auth');
 Route::resource('notes', 'NotesController', ['only'=> ['index','create','store', 'show', 'edit', 'update', 'destroy']]);
 
 // Notes routes
-Route::get('userpanel/dashboard', 'NotesController@index');
+Route::get('notes/index', 'NotesController@index');
 Route::post('notes', 'NotesController@store');
 Route::get('notes/create', 'NotesController@create');
 Route::post('notes/create', 'NotesController@store');

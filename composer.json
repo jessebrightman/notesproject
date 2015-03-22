@@ -5,8 +5,9 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
+      "laravel/framework": "4.2.*",
 		"swiftmailer/swiftmailer":">=5.3.2@dev",
-		"laravel/framework": "~4.2", 
+		"laravel/framework": "~4.2",
 		"zizaco/confide": "~4.0@dev",
 		"intervention/image": "1.*"
 	},

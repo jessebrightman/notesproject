@@ -2,11 +2,13 @@
 
 @section('maincontent')
 
+    <form>
     {{ Form::open(array('route' => 'notes.store')) }}
     <h1>{{ Confide::user()->username }}</h1>
     <div class="well">
         <b>email:</b> {{ Confide::user()->email }}
         <b>id:</b> {{ Confide::user()->id }}
+        <input type="submit" class="btn btn-lrg btn-success"/>
         {{ Form::submit('Save!', array('class' => 'btn btn-primary')) }}
     </div>
 
@@ -28,6 +30,7 @@
                         {{ Form::label('notes', 'Notes') }}
                         {{ Form::text('notes', Input::old('notes'), array('class' => 'form-control')) }}
 
+                       <input type="text" id="notes"/>
                     </div>
                 </div>
             </div>
@@ -44,7 +47,7 @@
                         @endforeach
                         {{ Form::label('tbd', 'Tbd') }}
                         {{ Form::text('tbd', Input::old('tbd'), array('class' => 'form-control')) }}
-
+                        <input type="text" id="tbd"/>
                     </div>
                 </div>
             </div>
@@ -60,9 +63,8 @@
                             </ul>
                         @endforeach
                         {{ Form::label('hyperlinks', 'Hyperlinks') }}
-
                         {{ Form::text('hyperlinks', Input::old('hyperlinks'), array('class' => 'form-control')) }}
-
+                         <input type="text" id="hyperlinks"/>
                     </div>
                 </div>
             </div>
@@ -80,12 +82,13 @@
                         {{ Form::label('images', 'Images') }}
                         {{ Form::file('images', Input::old('images'), array('class' => 'form-control')) }}
 
+                         <input type="file" id="images"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+    </form>
     {{ Form::close() }}
     @stop
