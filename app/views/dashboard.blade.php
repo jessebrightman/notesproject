@@ -65,10 +65,10 @@
 
                         @foreach($images as $i)
                             <div class="thumbnail">
-                                <img src="data:image/jpeg;base64,{{$i->images1}}" />
-                                <img src="{{$i->images}}"
-                                <a class="btn btn-sm btn-warning" href="{{ URL::to('destroy/' . $i->id ) }}">Delete</a></p>
+                                <a href="{{ URL::to('image/' . $i->id) }}"><img src="data:image/jpeg;base64,{{$i->images}}" /></a>
+                                <p><a class="btn btn-sm btn-warning" href="{{ URL::to('destroy/image/' . $i->id ) }}">Delete</a></p>
                             </div>
+
                         @endforeach
                         {{ Form::label('images', 'Images') }}
                         {{ Form::file('images', Input::old('images'), array('class' => 'form-control')) }}

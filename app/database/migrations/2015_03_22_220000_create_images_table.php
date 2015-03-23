@@ -20,17 +20,9 @@ class CreateImagesTable extends Migration {
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
 
-			$table->binary('images1');
-			$table->string('image_path1');
+			$table->binary('images');
+			$table->string('image_path');
 
-			$table->binary('images2');
-			$table->string('image_path2');
-
-			$table->binary('images3');
-			$table->string('image_path3');
-
-			$table->binary('images4');
-			$table->string('image_path4');
 
 			//created_at, updated_at DATETIME
 			$table->timestamps();

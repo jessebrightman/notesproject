@@ -22,7 +22,7 @@ class Images extends Eloquent implements UserInterface, RemindableInterface {
     protected $table = 'images';
     public $timestamps = true;
 
-    protected $fillable = ['user_id', 'images1', 'image_path1',  'images2', 'image_path2',  'images3', 'image_path3',  'images4', 'image_path4'];
+    protected $fillable = ['user_id', 'images', 'image_path'];
 
     /**
      * The attributes excluded from the model's JSON form.

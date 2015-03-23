@@ -22,9 +22,11 @@ class NotesController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function image($id)
 	{
 		//
+		$images = Images::where('id', $id)->get();
+		return View::make('image')->with('images', $images);
 	}
 
 
@@ -51,8 +53,8 @@ class NotesController extends \BaseController {
 			$f = Input::file('images');
 			$image = new Images();
 			$image->user_id = $id;
-			$image->image_path1 = $f->getClientOriginalName();
-			$image->images1 = base64_encode(file_get_contents($f->getRealPath()));
+			$image->image_path = $f->getClientOriginalName();
+			$image->images = base64_encode(file_get_contents($f->getRealPath()));
 			$image->save();
 
 
@@ -70,8 +72,8 @@ class NotesController extends \BaseController {
 			$f = Input::file('images');
 			$image = new Images();
 			$image->user_id = $id;
-			$image->image_path1 = $f->getClientOriginalName();
-			$image->images1 = base64_encode(file_get_contents($f->getRealPath()));
+			$image->image_path = $f->getClientOriginalName();
+			$image->images = base64_encode(file_get_contents($f->getRealPath()));
 			$image->save();
 
 			return Redirect::to('dashboard');
@@ -125,16 +127,25 @@ class NotesController extends \BaseController {
 	 * @return Response
 	 */
 	public function destroy($id)
+{
+	//
+	$note = Notes::find($id);
+	$note->hyperlinks = null;
+	$note->save();
+
+
+	// redirect
+	return Redirect::to('dashboard');
+}
+	public function destroyImage($id)
 	{
 		//
-		$note = Notes::find($id);
-		$note->hyperlinks = null;
-		$note->save();
+		$images = Images::find($id);
+		$images->delete();
 
 
 		// redirect
 		return Redirect::to('dashboard');
 	}
-
 
 }
