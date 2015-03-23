@@ -5,9 +5,8 @@
 
     {{ Form::open(array('route' => 'notes.store', 'method' => 'post', 'enctype' => 'multipart/form-data')) }}
     <h1>{{ Confide::user()->username }}</h1>
-    <div class="well">
-        <b>email:</b> {{ Confide::user()->email }}
-        <b>id:</b> {{ Confide::user()->id }}
+    <div class="jumbotron">
+        <b>user:</b> {{ Confide::user()->email }}
         {{ Form::submit('Save!', array('class' => 'btn btn-primary')) }}
     </div>
 

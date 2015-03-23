@@ -41,6 +41,7 @@ class NotesController extends \BaseController {
 		// store
 		$id = Confide::user()->id;
 		$notes = Notes::where('user_id', $id)->first();
+		$imgNum = DB::table('images')->where('user_id', "=", $id)->get();;
 		if($notes == null)
 		{
 			$note = new Notes();
@@ -50,15 +51,20 @@ class NotesController extends \BaseController {
 			$note->hyperlinks = Input::get('hyperlinks');
 			$note->save();
 
-			$f = Input::file('images');
-			$image = new Images();
-			$image->user_id = $id;
-			$image->image_path = $f->getClientOriginalName();
-			$image->images = base64_encode(file_get_contents($f->getRealPath()));
-			$image->save();
+			if((Input::file('images') != null) && (count($imgNum) <= 3))
+			{
+				$f = Input::file('images');
+				$image = new Images();
+				$image->user_id = $id;
+				$image->image_path = $f->getClientOriginalName();
+				$image->images = base64_encode(file_get_contents($f->getRealPath()));
+				$image->save();
 
-
-			return Redirect::to('dashboard');
+				return Redirect::to('dashboard');
+			}
+			else{
+				return Redirect::to('dashboard');
+			}
 		}
 		elseif($notes != null)
 		{
@@ -69,15 +75,20 @@ class NotesController extends \BaseController {
 			$note->hyperlinks = Input::get('hyperlinks');
 			$note->save();
 
-			$f = Input::file('images');
-			$image = new Images();
-			$image->user_id = $id;
-			$image->image_path = $f->getClientOriginalName();
-			$image->images = base64_encode(file_get_contents($f->getRealPath()));
-			$image->save();
+			if((Input::file('images') != null) && (count($imgNum) <= 3))
+			{
+				$f = Input::file('images');
+				$image = new Images();
+				$image->user_id = $id;
+				$image->image_path = $f->getClientOriginalName();
+				$image->images = base64_encode(file_get_contents($f->getRealPath()));
+				$image->save();
 
-			return Redirect::to('dashboard');
-
+				return Redirect::to('dashboard');
+			}
+			else{
+				return Redirect::to('dashboard');
+			}
 		}
 	}
 
