@@ -45,8 +45,10 @@
                     <div class="panel-body">
                         {{ Form::label('hyperlinks', 'Hyperlinks') }}
                         @foreach($notes as $n)
+                            @if($n->hyperlinks != null)
                             <p><a href="http://{{$n->hyperlinks}}">{{$n->hyperlinks}}</a>
                                 <a class="btn btn-sm btn-warning" href="{{ URL::to('destroy/' . $n->id ) }}">Delete</a></p>
+                            @endif
                         @endforeach
                         {{ Form::text('hyperlinks', Input::old('hyperlinks'), array('class' => 'form-control')) }}
 
