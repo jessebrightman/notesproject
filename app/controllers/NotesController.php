@@ -42,6 +42,11 @@ class NotesController extends \BaseController {
 		$id = Confide::user()->id;
 		$notes = Notes::where('user_id', $id)->first();
 		$imgNum = DB::table('images')->where('user_id', "=", $id)->get();;
+		$rules = array('file' => 'mimes:jpg,gif');
+		$messages = array('');
+		$customAttributes = array('');
+		$newImage = array(Input::get('images'));
+		$validator = Validator::make($newImage, $rules, $messages, $customAttributes);
 		if($notes == null)
 		{
 			$note = new Notes();
@@ -51,7 +56,7 @@ class NotesController extends \BaseController {
 			$note->hyperlinks = Input::get('hyperlinks');
 			$note->save();
 
-			if((Input::file('images') != null) && (count($imgNum) <= 3))
+			if((Input::file('images') != null) && (count($imgNum) <= 3) && ($validator->passes()))
 			{
 				$f = Input::file('images');
 				$image = new Images();
@@ -75,7 +80,7 @@ class NotesController extends \BaseController {
 			$note->hyperlinks = Input::get('hyperlinks');
 			$note->save();
 
-			if((Input::file('images') != null) && (count($imgNum) <= 3))
+			if((Input::file('images') != null) && (count($imgNum) <= 3) && (!$validator->passes()))
 			{
 				$f = Input::file('images');
 				$image = new Images();

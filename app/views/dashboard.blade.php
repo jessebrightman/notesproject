@@ -21,7 +21,7 @@
                     </div>
                     <div class="panel-body">
                         {{ Form::label('notes', 'Notes') }}
-                        <textarea id="notes" name="notes" rows="10" cols="50" class="form-control">@foreach($notes as $n){{$n->notes}}@endforeach</textarea>
+                        <textarea id="notes" name="notes" rows="20" cols="50" class="form-control">@foreach($notes as $n){{$n->notes}}@endforeach</textarea>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="panel-body">
                         {{ Form::label('tbd', 'Tbd') }}
-                        <textarea id="tbd" name="tbd" rows="10" cols="50" class="form-control">@foreach($notes as $n){{$n->tbd}}@endforeach</textarea>
+                        <textarea id="tbd" name="tbd" rows="20" cols="50" class="form-control">@foreach($notes as $n){{$n->tbd}}@endforeach</textarea>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                             @if($n->hyperlinks != null)
                             <p><a href="http://{{$n->hyperlinks}}">{{$n->hyperlinks}}</a>
                                 <textarea id="hyperlinks" name="hyperlinks" rows="1" cols="50" class="form-control">{{$n->hyperlinks}}</textarea>
-                                <a class="btn btn-sm btn-warning" href="{{ URL::to('destroy/' . $n->id ) }}">Delete</a></p>
+                                <a class="btn btn-xs btn-warning" href="{{ URL::to('destroy/' . $n->id ) }}">Delete</a></p>
                             @endif
                         @endforeach
                         {{ Form::text('hyperlinks', Input::old('hyperlinks'), array('class' => 'form-control')) }}
@@ -65,7 +65,7 @@
                         @foreach($images as $i)
                             <div class="thumbnail">
                                 <a href="{{ URL::to('image/' . $i->id) }}"><img src="data:image/jpeg;base64,{{$i->images}}" /></a>
-                                <p><a class="btn btn-sm btn-warning" href="{{ URL::to('destroy/image/' . $i->id ) }}">Delete</a></p>
+                                <p><a class="btn btn-xs btn-warning" href="{{ URL::to('destroy/image/' . $i->id ) }}">Delete</a></p>
                             </div>
 
                         @endforeach
