@@ -47,3 +47,4 @@ Route::get('notes/show', 'NotesController@show');
 Route::get('notes/edit', 'NotesController@edit');
 Route::get('notes/update', 'NotesController@update');
 Route::get('destroy/{id}', 'NotesController@destroy');
+

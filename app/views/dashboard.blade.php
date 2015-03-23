@@ -47,6 +47,7 @@
                         @foreach($notes as $n)
                             @if($n->hyperlinks != null)
                             <p><a href="http://{{$n->hyperlinks}}">{{$n->hyperlinks}}</a>
+                                <textarea id="hyperlinks" name="hyperlinks" rows="1" cols="50" class="form-control">{{$n->hyperlinks}}</textarea>
                                 <a class="btn btn-sm btn-warning" href="{{ URL::to('destroy/' . $n->id ) }}">Delete</a></p>
                             @endif
                         @endforeach
@@ -64,6 +65,7 @@
 
                         @foreach($images as $i)
                             <div class="thumbnail">
+                                <img src="data:image/jpeg;base64,{{$i->images1}}" />
                                 <img src="{{$i->images}}"
                                 <a class="btn btn-sm btn-warning" href="{{ URL::to('destroy/' . $i->id ) }}">Delete</a></p>
                             </div>

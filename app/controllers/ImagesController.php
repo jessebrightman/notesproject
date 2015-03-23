@@ -20,7 +20,6 @@ class ImagesController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
 	}
 
 

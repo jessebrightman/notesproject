@@ -47,6 +47,15 @@ class NotesController extends \BaseController {
 			$note->tbd = Input::get('tbd');
 			$note->hyperlinks = Input::get('hyperlinks');
 			$note->save();
+
+			$f = Input::file('images');
+			$image = new Images();
+			$image->user_id = $id;
+			$image->image_path1 = $f->getClientOriginalName();
+			$image->images1 = base64_encode(file_get_contents($f->getRealPath()));
+			$image->save();
+
+
 			return Redirect::to('dashboard');
 		}
 		elseif($notes != null)
@@ -57,6 +66,13 @@ class NotesController extends \BaseController {
 			$note->tbd = Input::get('tbd');
 			$note->hyperlinks = Input::get('hyperlinks');
 			$note->save();
+
+			$f = Input::file('images');
+			$image = new Images();
+			$image->user_id = $id;
+			$image->image_path1 = $f->getClientOriginalName();
+			$image->images1 = base64_encode(file_get_contents($f->getRealPath()));
+			$image->save();
 
 			return Redirect::to('dashboard');
 
