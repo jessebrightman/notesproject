@@ -2,16 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: Jesse
- * Date: 14/03/2015
- * Time: 3:01 PM
+ * Date: 22/03/2015
+ * Time: 3:07 PM
  */
-
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Notes extends Eloquent implements UserInterface, RemindableInterface {
+class Links extends Eloquent implements UserInterface, RemindableInterface {
 
     use UserTrait, RemindableTrait;
 
@@ -20,10 +19,10 @@ class Notes extends Eloquent implements UserInterface, RemindableInterface {
      *
      * @var string
      */
-    protected $table = 'notes';
+    protected $table = 'links';
     public $timestamps = true;
 
-    protected $fillable = ['user_id', 'notes', 'tbd'];
+    protected $fillable = ['user_id', 'hyperlinks'];
 
     /**
      * The attributes excluded from the model's JSON form.

@@ -43,15 +43,16 @@
                     </div>
                     <div class="panel-body">
                         {{ Form::label('hyperlinks', 'Hyperlinks') }}
-                        @foreach($notes as $n)
-                            @if($n->hyperlinks != null)
-                            <p><a href="http://{{$n->hyperlinks}}">{{$n->hyperlinks}}</a>
-                                <textarea id="hyperlinks" name="hyperlinks" rows="1" cols="50" class="form-control">{{$n->hyperlinks}}</textarea>
-                                <a class="btn btn-xs btn-warning" href="{{ URL::to('destroy/' . $n->id ) }}">Delete</a></p>
+                        @foreach($links as $l)
+                            @if($l->hyperlinks != null)
+                            <p><a href="http://{{$l->hyperlinks}}">{{$l->hyperlinks}}</a>
+                                <textarea id="hyperlinks{{$l->id}}" name="hyperlinks{{$l->id}}" rows="1" cols="50" class="form-control" >{{$l->hyperlinks}}</textarea>
+                                <input type="hidden" id="linkid" value="{{$l->id}}" />
+                                <a class="btn btn-xs btn-warning" href="{{ URL::to('destroy/' . $l->id ) }}">Delete</a></p>
                             @endif
                         @endforeach
-                        {{ Form::text('hyperlinks', Input::old('hyperlinks'), array('class' => 'form-control')) }}
 
+                        {{ Form::text('newhyperlinks', Input::old('newhyperlinks'), array('class' => 'form-control')) }}
                     </div>
                 </div>
             </div>

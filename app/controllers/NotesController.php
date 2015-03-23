@@ -13,7 +13,8 @@ class NotesController extends \BaseController {
 		$id = Confide::user()->id;
 		$notes = Notes::where('user_id', $id)->get();
 		$images = Images::where('user_id', $id)->get();
-		return View::make('dashboard')->with('notes', $notes)->with('images', $images);
+		$links = Links::where('user_id', $id)->get();
+		return View::make('dashboard')->with('notes', $notes)->with('images', $images)->with('links', $links);
 	}
 
 
@@ -41,22 +42,38 @@ class NotesController extends \BaseController {
 		// store
 		$id = Confide::user()->id;
 		$notes = Notes::where('user_id', $id)->first();
-		$imgNum = DB::table('images')->where('user_id', "=", $id)->get();;
+		$linkid = Input::get('linkid');
+		$links = Links::where('id', $linkid)->first();
+		$updatelinks = DB::table('links')->where('user_id', "=", $id)->get();
+		$imgNum = DB::table('images')->where('user_id', "=", $id)->get();
 		$rules = array('file' => 'mimes:jpg,gif');
 		$messages = array('');
 		$customAttributes = array('');
 		$newImage = array(Input::get('images'));
 		$validator = Validator::make($newImage, $rules, $messages, $customAttributes);
-		if($notes == null)
-		{
+
+		if($notes == null) {
 			$note = new Notes();
 			$note->user_id = Confide::user()->id;
 			$note->notes = Input::get('notes');
 			$note->tbd = Input::get('tbd');
-			$note->hyperlinks = Input::get('hyperlinks');
 			$note->save();
 
-			if((Input::file('images') != null) && (count($imgNum) <= 3) && ($validator->passes()))
+			if($links != null)
+			{
+				$link = Links::where('id', $linkid)->first();
+				$link->user_id = $id;
+				$link->hyperlinks = Input::get("hyperlinks.$linkid");
+				$link->save();
+			}
+			else
+			{
+				$link = new Links();
+				$link->user_id = $id;
+				$link->hyperlinks = Input::get('newhyperlinks');
+				$link->save();
+			}
+			if ((Input::file('images') != null) && (count($imgNum) <= 3) && ($validator->passes()))
 			{
 				$f = Input::file('images');
 				$image = new Images();
@@ -67,19 +84,34 @@ class NotesController extends \BaseController {
 
 				return Redirect::to('dashboard');
 			}
-			else{
+			else
+			{
 				return Redirect::to('dashboard');
 			}
 		}
+
 		elseif($notes != null)
 		{
 			$note = Notes::where('user_id', $id)->first();
-			$note->user_id = Confide::user()->id;
+			$note->user_id = $id;
 			$note->notes = Input::get('notes');
 			$note->tbd = Input::get('tbd');
-			$note->hyperlinks = Input::get('hyperlinks');
 			$note->save();
 
+			if($links != null)
+			{
+				$link = Links::where('id', $linkid)->first();
+				$link->user_id = $id;
+				$link->hyperlinks = Input::get("hyperlinks.$linkid");
+				$link->save();
+			}
+			else
+			{
+				$link = new Links();
+				$link->user_id = $id;
+				$link->hyperlinks = Input::get('newhyperlinks');
+				$link->save();
+			}
 			if((Input::file('images') != null) && (count($imgNum) <= 3) && (!$validator->passes()))
 			{
 				$f = Input::file('images');
@@ -145,10 +177,8 @@ class NotesController extends \BaseController {
 	public function destroy($id)
 {
 	//
-	$note = Notes::find($id);
-	$note->hyperlinks = null;
-	$note->save();
-
+	$link = Links::find($id);
+	$link->delete();
 
 	// redirect
 	return Redirect::to('dashboard');
@@ -158,7 +188,6 @@ class NotesController extends \BaseController {
 		//
 		$images = Images::find($id);
 		$images->delete();
-
 
 		// redirect
 		return Redirect::to('dashboard');
