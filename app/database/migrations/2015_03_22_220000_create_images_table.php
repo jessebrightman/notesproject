@@ -21,6 +21,7 @@ class CreateImagesTable extends Migration {
 			$table->foreign('user_id')->references('id')->on('users');
 
 			$table->binary('images');
+			$table->string('image_path');
 
 			//created_at, updated_at DATETIME
 			$table->timestamps();

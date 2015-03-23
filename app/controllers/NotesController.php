@@ -37,15 +37,30 @@ class NotesController extends \BaseController {
 	{
 		//
 		// store
+		$id = Confide::user()->id;
+		$notes = Notes::where('user_id', $id)->first();
+		if($notes == null)
+		{
+			$note = new Notes();
+			$note->user_id = Confide::user()->id;
+			$note->notes = Input::get('notes');
+			$note->tbd = Input::get('tbd');
+			$note->hyperlinks = Input::get('hyperlinks');
+			$note->save();
+			return Redirect::to('dashboard');
+		}
+		elseif($notes != null)
+		{
+			$note = Notes::where('user_id', $id)->first();
+			$note->user_id = Confide::user()->id;
+			$note->notes = Input::get('notes');
+			$note->tbd = Input::get('tbd');
+			$note->hyperlinks = Input::get('hyperlinks');
+			$note->save();
 
-		$note = new Notes();
-		$note->user_id = Confide::user()->id;
-		$note->notes = Input::get('notes');
-		$note->tbd = Input::get('tbd');
-		$note->hyperlinks = Input::get('hyperlinks');
-		$note->save();
+			return Redirect::to('dashboard');
 
-		return Redirect::to('dashboard');
+		}
 	}
 
 
@@ -80,9 +95,10 @@ class NotesController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
 		//
+
 	}
 
 
@@ -95,8 +111,10 @@ class NotesController extends \BaseController {
 	public function destroy($id)
 	{
 		//
-		$notes = Notes::find($id);
-		$notes->delete();
+		$note = Notes::find($id);
+		$note->hyperlinks = null;
+		$note->save();
+
 
 		// redirect
 		return Redirect::to('dashboard');

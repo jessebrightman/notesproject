@@ -62,7 +62,7 @@
 
                         @foreach($images as $i)
                             <div class="thumbnail">
-                                {{$n->images}}
+                                <img src="{{$i->images}}"
                                 <a class="btn btn-sm btn-warning" href="{{ URL::to('destroy/' . $i->id ) }}">Delete</a></p>
                             </div>
                         @endforeach

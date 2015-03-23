@@ -36,7 +36,7 @@ Route::get('dashboard', function(){ return View::make('dashboard'); });
 // Applies auth filter to the routes within admin/
 Route::when('userpanel/*', 'auth');
 
-Route::resource('notes', 'NotesController', ['only'=> ['index','create','store', 'show', 'edit', 'update', 'destroy']]);
+Route::resource('notes', 'NotesController', ['only'=> ['index','create','store', 'show', 'edit', 'destroy']]);
 
 // Notes routes
 Route::get('dashboard', 'NotesController@index');
